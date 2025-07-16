@@ -1,0 +1,16 @@
+.not-found {
+  text-align: center;
+  padding: 2rem;
+  min-height: 80vh;
+}
+
+.not-found h2 {
+  color: #e74c3c;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.not-found p {
+  color: #7f8c8d;
+  font-size: 1.2rem;
+}
