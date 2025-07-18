@@ -1,19 +1,32 @@
-import { Link } from 'react-router-dom';
-import './ItemList.css';
+import { Link } from 'react-router-dom'
+import Item from './Item'
+import './ItemList.css'
 
-const ItemList = ({ vehicles }) => {
+const ItemList = ({ vehicles, categories }) => {
   return (
     <div className="item-list">
-      {vehicles.map(vehicle => (
-        <div key={vehicle.id} className="vehicle-card">
-          <img src={vehicle.pictureUrl} alt={vehicle.title} className="vehicle-image" />
-          <h3>{vehicle.title}</h3>
-          <p>Precio: ${vehicle.price}</p>
-          <Link to={`/item/${vehicle.id}`} className="details-link">Ver detalles</Link>
+      <div className="categories-nav">
+        <h3>Filtrar por categoría:</h3>
+        <div className="categories-links">
+          <Link to="/" className="category-link">Todos</Link>
+          {categories.map(cat => (
+            <Link 
+              key={cat} 
+              to={`/category/${cat}`} 
+              className="category-link"
+            >
+              {cat}
+            </Link>
+          ))}
         </div>
-      ))}
+      </div>
+      <div className="vehicles-grid">
+        {vehicles.map(vehicle => (
+          <Item key={vehicle.id} vehicle={vehicle} />
+        ))}
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default ItemList;
+export default ItemList
